@@ -1,16 +1,289 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
+
+<head>
+    <title>
+
+    </title>
+    <style type="text/css">
+        td {
+            border: 0.5px solid black;
+        }
+    </style>
+</head>
+
 <body>
-<table border="1">
-    <tr><td style="text-align: center; vertical-align: middle; padding-top: 5px;" colspan="2"><b>Payroll</b></td></tr>
-    <tr>
-        <td style="text-align: center; vertical-align: middle; padding-top: 5px;">Name</td>
-        <td style="text-align: center; vertical-align: middle; padding-top: 5px;">{{ json_data.Name }}</td>
-    </tr>
-    <tr>
-        <td style="text-align: center; vertical-align: middle; padding-top: 5px;">Salary</td>
-        <td style="text-align: center; vertical-align: middle; padding-top: 5px;">{{ json_data.Salary }}</td>
-    </tr>
-</table>
+    <table style="width: 800px ;padding-left: 5px; padding-top: 5px;">
+        <tbody>
+            <tr>
+                <td colspan="2" style="padding-bottom: 10px; border: 0px;" align="center"><img src="logo.jpg"
+                        style="width: 350px"></td>
+                <td colspan="2" align="center" style="border: 0px;">
+                    <h1>PAYSLIP</h1>
+                    <h4>For the period from {{ json_data.from_date }} to {{ json_data.to_date }}</h4>
+                    <h4>Currency Unit: VND</h4>
+                </td>
+            </tr>
+            <tr>
+                <td>Employee Name</td>
+                <td><strong>{{ json_data.Name }}</strong></td>
+                <td>Code</td>
+                <td>{{ json_data.Code_fm }}</td>
+            </tr>
+            <tr>
+                <td>Contract days</td>
+                <td>{{ json_data.days_contract }}</td>
+                <td>Probation days</td>
+                <td>{{ json_data.days_probation }}</td>
+            </tr>
+            <tr style="height: 20px"> </tr>
+            <tr style="background-color:#D5DCE4;">
+                <td colspan="4"><strong>
+                        <center>Working days in month</center>
+                    </strong></td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Auto working days in month</p>
+                </td>
+                <td>
+                    <p>{{ json_data.Working_day }}</p>
+                </td>
+                <td>
+                    <p>Employee's working days</p>
+                </td>
+                <td>
+                    <p>{{ json_data.Working_day }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Annual leave</p>
+                </td>
+                <td>
+                    <p>{{ json_data.Full_paid_leave }}</p>
+                </td>
+                <td>
+                    <p>Special leave</p>
+                </td>
+                <td>
+                    <p>{{ json_data.Special_leave }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Unpaid leave</p>
+                </td>
+                <td>
+                    <p>{{ json_data.Unpaid_leave }}</p>
+                </td>
+                <td>
+                    <p>Sick leave/ Maternity leave</p>
+                </td>
+                <td>
+                    <p>{{ json_data.Sick_leave }}/{{ json_data.Maternity_leave }}</p>
+                </td>
+            </tr>
+            <tr style="height: 20px;"> </tr>
+            <tr style="background-color: #D5DCE4;">
+                <td colspan="4">
+                    <p><strong>
+                            <center>Salary</center>
+                        </strong></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Basic salary</p>
+                </td>
+                <td>
+                    <p>{{ json_data.Gross_Salary_level_fm }}</p>
+                </td>
+                <td>
+                    <p>Probation salary</p>
+                </td>
+                <td>
+                    <p>{{ json_data.Probation_salary_fm }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Actual contract salary</p>
+                </td>
+                <td>
+                    <p>{{ json_data.Actual_sal_contract }}</p>
+                </td>
+                <td>
+                    <p>Actual probation salary</p>
+                </td>
+                <td>
+                    <p>{{ json_data.Actual_pro_sal }}</p>
+                </td>
+            </tr>
+
+            <tr style="background-color:#D9D9D9;">
+                <td colspan="2">
+                    <p><strong>[A] Salary based on working days and paid leaves</strong></p>
+                </td>
+                <td colspan="2">
+                    <p><strong>{{ json_data.Gross_salary_fm }}</strong></p>
+                </td>
+            </tr>
+            <tr style="height: 15px;"> </tr>
+            <tr style="background-color: #D9D9D9;">
+                <td colspan="2">
+                    <p><strong>[</strong><strong>B]Additional amount (1+2+3+4+5)</strong></p>
+                </td>
+                <td colspan="2">
+                    <p><strong>{{ json_data.Total_additional_fm }}</strong></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p>Total OT (h)/ Total Amount(1)</p>
+                </td>
+                <td colspan="2">
+                    <p>{{ json_data.Total_OT_hour }}/{{ json_data.Total_OT_fm }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p>Lunch allowance(2)</p>
+                </td>
+                <td colspan="2">
+                    <p>{{ json_data.Lunch_allowance_fm }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p>Relocation package support (3)</p>
+                </td>
+                <td colspan="2">
+                    <p>{{ json_data.Relotation_support__package_fm }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p>Referral bonus(4)</p>
+                </td>
+                <td colspan="2">
+                    <p>{{ json_data.Referral_bonus_fm }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p>Other additional(5)</p>
+                </td>
+                <td colspan="2">
+                    <p>{{ json_data.Remedy_fm }}</p>
+                </td>
+            </tr>
+            <tr style="height: 15px;"> </tr>
+            <tr style="background-color: #D9D9D9;">
+                <td colspan="2">
+                    <p><strong>[C] Deduction amount (1+2+3+4+5)</strong></p>
+                </td>
+                <td colspan="2">
+                    <p><strong>{{ json_data.Total_deduction_fm }}</strong></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p>Social insurance (8%)</p>
+                </td>
+                <td colspan="2">
+                    <p>{{ json_data.SI_by_employee }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p>Health insurance (1.5%)</p>
+                </td>
+                <td colspan="2">
+                    <p>{{ json_data.HI_by_employee }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p>Unemployment insurance (1%)</p>
+                </td>
+                <td colspan="2">
+                    <p>{{ json_data.UI_by_employee }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p>TotalSocial Insurance (10.5%) (1)</p>
+                </td>
+                <td colspan="2">
+                    <p>{{ json_data.Total_SI_by_employee_fm }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p>Late time (h)/ Amount (2)</p>
+                </td>
+                <td colspan="2">
+                    <p>{{ json_data.Late_time }}/{{ json_data.Late_time_fm }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p>Early time (h)/ Amount (3)</p>
+                </td>
+                <td colspan="2">
+                    <p>{{ json_data.Early_time }}/{{ json_data.Early_time_fm }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p>Dependents No/ Taxable amount</p>
+                </td>
+                <td colspan="2">
+                    <p>{{ json_data.Dependent_Qty }}/{{ json_data.Taxable_income_fm }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p>Personal income tax(4)</p>
+                </td>
+                <td colspan="2">
+                    <p>{{ json_data.Income_tax_fm }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p>Other deduction(5)</p>
+                </td>
+                <td colspan="2">
+                    <p>{{ json_data.Other__deduction_fm }}</p>
+                </td>
+            </tr>
+            <tr style="height: 20px;"> </tr>
+            <tr style="background-color:#D5DCE4;">
+                <td colspan="2">
+                    <p><strong>[</strong><strong>D</strong><strong>] TOTAL NET SALARY RECEIVED</strong><strong>= A +
+                            B
+                            - C</strong></p>
+                </td>
+                <td colspan="2">
+                    <h2><strong>{{ json_data.net_taken_home_fm }} VND</strong></h2>
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 0px;" colspan="4">
+                    <br>
+                    <br>
+                    <p>
+                        <center><strong>If you have any questions about this payslip, please contact HR
+                                Department</strong></center>
+                    </p>
+                </td>
+
+
+            </tr>
+        </tbody>
+
+    </table>
 </body>
+
 </html>
