@@ -9,7 +9,7 @@ templateEnv = jinja2.Environment(loader=templateLoader)
 TEMPLATE_FILE = "payslip_template.html"
 template = templateEnv.get_template(TEMPLATE_FILE)
 
-# This data can come from database query
+# This data can come from database query test
 loc = join(dirname(dirname(abspath(__file__))), 'send_payroll_over_email' ,'database.xlsx')
 wb=xlrd.open_workbook(loc)
 sheet_names = wb.sheet_names()
